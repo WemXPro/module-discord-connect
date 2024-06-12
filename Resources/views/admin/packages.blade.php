@@ -47,9 +47,13 @@
                                         <tr>
                                             <td class="text-center">{{ $event->name }}</td>
                                             <td class="text-center">
+                                                @if($event->all_packages)
+                                                    All Packages
+                                                @else
                                                 @foreach ($event->packages ?? [] as $package)
                                                     <a href="{{ route('packages.edit', $package) }}">{{ $package }}</a>
                                                 @endforeach
+                                                @endif
                                             </td>
                                             <td class="text-center">{{ $event->event }}</td>
 
@@ -66,10 +70,6 @@
                                             </td>
 
                                             <td class="text-center">
-                                                <a href="#"
-                                                    class="btn btn-primary mr-2" title="{!! __('Edit') !!}">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
                                                 <a href="{{ route('admin.discord-connect.packages.destroy', $event->id) }}"
                                                     class="btn btn-danger mr-2" title="{!! __('Delete') !!}">
                                                     <i class="fas fa-trash-alt"></i>
