@@ -5,7 +5,7 @@ namespace Modules\DiscordConnect\Listeners;
 use App\Models\Order;
 use Modules\DiscordConnect\Entities\PackageEvent;
 use Modules\DiscordConnect\Services\Discord;
-use App\Events\OrderUnsuspended;
+use App\Events\Order\OrderUnsuspended;
 
 class OrderUnsuspendedListener
 {

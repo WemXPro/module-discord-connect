@@ -30,12 +30,12 @@ class DiscordConnectServiceProvider extends ServiceProvider
     {
         $this->app['router']->pushMiddlewareToGroup('web', ForceDiscordConnect::class);
 
-        Event::listen(Events\OrderCreated::class, Listeners\OrderCreatedListener::class);
-        Event::listen(Events\OrderRenewed::class, Listeners\OrderRenewedListener::class);
-        Event::listen(Events\OrderSuspended::class, Listeners\OrderSuspendedListener::class);
-        Event::listen(Events\OrderTerminated::class, Listeners\OrderTerminatedListener::class);
-        Event::listen(Events\OrderUnsuspended::class, Listeners\OrderUnsuspendedListener::class);
-        Event::listen(Events\OrderUpgraded::class, Listeners\OrderUpgradedListener::class);
+        Event::listen(Events\Order\OrderCreated::class, Listeners\OrderCreatedListener::class);
+        Event::listen(Events\Order\OrderCreatedOrderRenewed::class, Listeners\OrderRenewedListener::class);
+        Event::listen(Events\Order\OrderSuspended::class, Listeners\OrderSuspendedListener::class);
+        Event::listen(Events\Order\OrderCreatedOrderTerminated::class, Listeners\OrderTerminatedListener::class);
+        Event::listen(Events\Order\OrderCreatedOrderUnsuspended::class, Listeners\OrderUnsuspendedListener::class);
+        Event::listen(Events\Order\OrderCreatedOrderUpgraded::class, Listeners\OrderUpgradedListener::class);
 
         $this->registerTranslations();
         $this->registerConfig();

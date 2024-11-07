@@ -5,7 +5,8 @@ namespace Modules\DiscordConnect\Listeners;
 use App\Models\Order;
 use Modules\DiscordConnect\Entities\PackageEvent;
 use Modules\DiscordConnect\Services\Discord;
-use App\Events\OrderSuspended;
+use App\Events\Order\OrderSuspended;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class OrderSuspendedListener
 {
@@ -21,7 +22,7 @@ class OrderSuspendedListener
         $userDiscordId = $order->user->oauthService('discord')->first();
         if(!$userDiscordId) {
             return;
-        } 
+        }
 
         $userDiscordId = $userDiscordId->data->id;
         
