@@ -2,8 +2,6 @@
  
 namespace Modules\DiscordConnect\Listeners;
  
-use App\Models\Order;
-use Modules\DiscordConnect\Entities\PackageEvent;
 use Modules\DiscordConnect\Services\Discord;
 use App\Events\Order\OrderCreated;
 
@@ -12,35 +10,8 @@ class OrderCreatedListener
     /**
      * Handle the event.
      */
-    public function handle(OrderCreated $orderCreated): void
+    public function handle(OrderCreated $event): void
     {
-        $order = $orderCreated->order;
-        $events = PackageEvent::where('event', 'order_created')->get();
-        $discord = new Discord();
-
-        $userDiscordId = $order->user->oauthService('discord')->first();
-        if(!$userDiscordId) {
-            return;
-        } 
-
-        $userDiscordId = $userDiscordId->data->id;
-        
-        foreach($events as $event) {
-            if($event->all_packages) {
-                if($event->action == 'give') {
-                    $discord->giveRoles($userDiscordId, $event->roles);
-                } else {
-                    $discord->removeRoles($userDiscordId, $event->roles);
-                }
-            } else {
-                if(in_array($order->package_id, $event->packages)) {
-                    if($event->action == 'give') {
-                        $discord->giveRoles($userDiscordId, $event->roles);
-                    } else {
-                        $discord->removeRoles($userDiscordId, $event->roles);
-                    }
-                }
-            }
-        }
+        (new Discord)->handleEvent('order_created', $event->order);
     }
 }

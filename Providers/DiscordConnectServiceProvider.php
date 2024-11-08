@@ -30,9 +30,13 @@ class DiscordConnectServiceProvider extends ServiceProvider
     {
         $this->app['router']->pushMiddlewareToGroup('web', ForceDiscordConnect::class);
 
+        Event::listen(Events\Oauth\OauthConnected::class, Listeners\OauthConnectedListener::class);
+        Event::listen(Events\Oauth\OauthDisconnected::class, Listeners\OauthDisconnectedListener::class);
+
         Event::listen(Events\Order\OrderCreated::class, Listeners\OrderCreatedListener::class);
         Event::listen(Events\Order\OrderCreatedOrderRenewed::class, Listeners\OrderRenewedListener::class);
         Event::listen(Events\Order\OrderSuspended::class, Listeners\OrderSuspendedListener::class);
+        Event::listen(Events\Order\OrderCancelled::class, Listeners\OrderCancelledListener::class);
         Event::listen(Events\Order\OrderCreatedOrderTerminated::class, Listeners\OrderTerminatedListener::class);
         Event::listen(Events\Order\OrderCreatedOrderUnsuspended::class, Listeners\OrderUnsuspendedListener::class);
         Event::listen(Events\Order\OrderCreatedOrderUpgraded::class, Listeners\OrderUpgradedListener::class);
@@ -44,7 +48,7 @@ class DiscordConnectServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the service provider.
+     * Register the service provider. 
      *
      * @return void
      */

@@ -146,6 +146,7 @@
                                         <option value="order_upgraded">Order Upgraded</option>
                                         <option value="order_suspended">Order Suspended</option>
                                         <option value="order_unsuspended">Order Unsuspended</option>
+                                        <option value="order_cancelled">Order Cancelled</option>
                                         <option value="order_terminated">Order Terminated</option>
                                     </select>
                                     <small class="form-text text-muted">

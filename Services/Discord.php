@@ -4,10 +4,45 @@ namespace Modules\DiscordConnect\Services;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
-
+use Modules\DiscordConnect\Entities\PackageEvent;
 
 class Discord
 {
+    public function handleEvent($eventName, $order)
+    {
+        try {
+            $events = PackageEvent::where('event', $eventName)->get();
+            $userDiscordId = $order->user->oauthService('discord')->first();
+
+            if(!$userDiscordId) {
+                return;
+            } 
+
+            $userDiscordId = $userDiscordId->data->id;
+            
+            foreach($events as $event) {
+                if($event->all_packages) {
+                    if($event->action == 'give') {
+                        $this->giveRoles($userDiscordId, $event->roles);
+                    } else {
+                        $this->removeRoles($userDiscordId, $event->roles);
+                    }
+                } else {
+                    if(in_array($order->package_id, $event->packages)) {
+                        if($event->action == 'give') {
+                            $this->giveRoles($userDiscordId, $event->roles);
+                        } else {
+                            $this->removeRoles($userDiscordId, $event->roles);
+                        }
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            // dd($e);
+            ErrorLog("DiscordConnect:{$eventName}", $e->getMessage());
+        }
+    }
+
     public function getRoles()
     {
         $roles = Cache::remember('discord-roles', 60, function() {
