@@ -1,11 +1,16 @@
 {
     "name": "DiscordConnect",
-    "alias": "discord-connect",
-    "description": "",
+    "alias": "discordconnect",
+    "description": "DiscordConnect module",
     "keywords": [],
     "priority": 0,
     "providers": [
         "Modules\\DiscordConnect\\Providers\\DiscordConnectServiceProvider"
     ],
-    "files": []
+    "files": [],
+    "type": "module",
+    "icon": "https://imgur.png",
+    "author": "WemX",
+    "version": "1.0.0",
+    "wemx_version": "2.2.0"
 }
