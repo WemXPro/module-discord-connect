@@ -3,7 +3,7 @@
 namespace Modules\DiscordConnect\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Package;
+use App\Models\Packages\Package;
 
 class PackageEvent extends Model
 {
