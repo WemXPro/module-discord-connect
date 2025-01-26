@@ -1,14 +1,14 @@
 @extends(AdminTheme::wrapper(), ['title' => __('admin.settings'), 'keywords' => 'WemX Dashboard, WemX Panel'])
 
 @section('css_libraries')
-<link rel="stylesheet" href="{{ asset(AdminTheme::assets('modules/summernote/summernote-bs4.css')) }}" />
-<link rel="stylesheet" href="{{ asset(AdminTheme::assets('modules/select2/dist/css/select2.min.css')) }}">
+<link rel="stylesheet" href="{{ AdminTheme::assets('modules/summernote/summernote-bs4.css') }}">
+<link rel="stylesheet" href="{{ AdminTheme::assets('modules/select2/dist/css/select2.min.css') }}">
 
 @endsection
 
 @section('js_libraries')
-<script src="{{ asset(AdminTheme::assets('modules/summernote/summernote-bs4.js')) }}"></script>
-<script src="{{ asset(AdminTheme::assets('modules/select2/dist/js/select2.full.min.js')) }}"></script>
+<script src="{{ AdminTheme::assets('modules/summernote/summernote-bs4.js') }}"></script>
+<script src="{{ AdminTheme::assets('modules/select2/dist/js/select2.full.min.js') }}"></script>
 @endsection
 
 @section('container')
@@ -47,7 +47,7 @@
                       </span>
                   </label>
                 </div>
-              
+
                 <div class="form-group col-12">
                     <label>Discord Server ID</label>
                     <input type="number" name="discord-connect::discord_server" value="@settings('discord-connect::discord_server', '')" class="form-control">

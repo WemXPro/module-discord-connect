@@ -1,13 +1,13 @@
 @extends(AdminTheme::wrapper(), ['title' => 'Package Events', 'keywords' => 'WemX Dashboard, WemX Panel'])
 
 @section('css_libraries')
-    <link rel="stylesheet" href="{{ asset(AdminTheme::assets('modules/summernote/summernote-bs4.css')) }}" />
-    <link rel="stylesheet" href="{{ asset(AdminTheme::assets('modules/select2/dist/css/select2.min.css')) }}">
+    <link rel="stylesheet" href="{{ AdminTheme::assets('modules/summernote/summernote-bs4.css') }}">
+    <link rel="stylesheet" href="{{ AdminTheme::assets('modules/select2/dist/css/select2.min.css') }}">
 @endsection
 
 @section('js_libraries')
-    <script src="{{ asset(AdminTheme::assets('modules/summernote/summernote-bs4.js')) }}"></script>
-    <script src="{{ asset(AdminTheme::assets('modules/select2/dist/js/select2.full.min.js')) }}"></script>
+    <script src="{{ AdminTheme::assets('modules/summernote/summernote-bs4.js') }}"></script>
+    <script src="{{ AdminTheme::assets('modules/select2/dist/js/select2.full.min.js') }}"></script>
 @endsection
 
 @section('container')
@@ -30,7 +30,7 @@
                     <div class="card-body p-0">
                         @if($events->isEmpty())
                             @include(AdminTheme::path('empty-state'), ['title' => 'No events found', 'description' => 'Create a new event by clicking the button above.'])
-                        @else 
+                        @else
                         <div class="table-responsive">
                             <table class="table table-striped table-md">
                                 <tbody>
@@ -181,7 +181,7 @@
                                     </small>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
 
                     </div>
                     <div class="modal-footer">
@@ -197,7 +197,7 @@
         function allPackagesUpdated(element, id) {
             packagesDiv = document.getElementById('packagesdiv' + id);
             if (element.checked) {
-                // display none 
+                // display none
                 packagesDiv.style.display = 'none';
             } else {
                 packagesDiv.style.display = '';
