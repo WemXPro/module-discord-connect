@@ -1,23 +1,20 @@
 <?php
 namespace Modules\DiscordConnect\Http\Controllers\Admin;
 
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Routing\Controller;
-use Nwidart\Modules\Facades\Module;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Modules\DiscordConnect\Entities\PackageEvent;
-use Illuminate\Support\Facades\Http;
 use Modules\DiscordConnect\Services\Discord;
 
 
 class AdminController extends Controller
 {
-    public function index(Discord $discord) 
+    public function index(Discord $discord)
     {
         return view('discordconnect::admin.settings');
     }
 
-    public function packages(Discord $discord) 
+    public function packages(Discord $discord)
     {
         $events = PackageEvent::latest()->paginate(15);
         $roles = $discord->getRoles();
@@ -25,7 +22,7 @@ class AdminController extends Controller
         return view('discordconnect::admin.packages', compact('events', 'roles'));
     }
 
-    public function createEvent(Request $request) 
+    public function createEvent(Request $request)
     {
         $request->validate([
             'name' => 'required',
@@ -48,7 +45,7 @@ class AdminController extends Controller
         return redirect()->route('admin.discord-connect.packages');
     }
 
-    public function delete(PackageEvent $event) 
+    public function delete(PackageEvent $event)
     {
         $event->delete();
 

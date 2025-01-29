@@ -1,9 +1,9 @@
 <?php
- 
+
 namespace Modules\DiscordConnect\Listeners;
- 
-use Modules\DiscordConnect\Services\Discord;
+
 use App\Events\Order\OrderUpgraded;
+use Modules\DiscordConnect\Services\Discord;
 
 class OrderUpgradedListener
 {

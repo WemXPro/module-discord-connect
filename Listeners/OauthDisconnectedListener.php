@@ -1,9 +1,9 @@
 <?php
- 
+
 namespace Modules\DiscordConnect\Listeners;
- 
+
+use App\Events\Oauth\OauthDisconnected;
 use Modules\DiscordConnect\Services\Discord;
-use App\Events\Oauth\OauthDisconnected;	
 
 class OauthDisconnectedListener
 {

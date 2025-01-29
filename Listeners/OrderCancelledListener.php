@@ -1,9 +1,9 @@
 <?php
- 
+
 namespace Modules\DiscordConnect\Listeners;
- 
-use Modules\DiscordConnect\Services\Discord;
+
 use App\Events\Order\OrderCancelled;
+use Modules\DiscordConnect\Services\Discord;
 
 class OrderCancelledListener
 {

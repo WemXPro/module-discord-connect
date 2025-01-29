@@ -2,8 +2,8 @@
 
 namespace Modules\DiscordConnect\Services;
 
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 use Modules\DiscordConnect\Entities\PackageEvent;
 
 class Discord
@@ -16,10 +16,10 @@ class Discord
 
             if(!$userDiscordId) {
                 return;
-            } 
+            }
 
             $userDiscordId = $userDiscordId->data->id;
-            
+
             foreach($events as $event) {
                 if($event->all_packages) {
                     if($event->action == 'give') {
@@ -76,7 +76,7 @@ class Discord
             }
         }
     }
-    
+
     public function api($endpoint, $data = [], $method = 'GET')
     {
         $botToken = settings('encyroted::discord-connect::bot_token');

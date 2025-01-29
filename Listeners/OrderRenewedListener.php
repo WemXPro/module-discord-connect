@@ -1,9 +1,9 @@
 <?php
- 
+
 namespace Modules\DiscordConnect\Listeners;
- 
-use Modules\DiscordConnect\Services\Discord;
+
 use App\Events\Order\OrderRenewed;
+use Modules\DiscordConnect\Services\Discord;
 
 class OrderRenewedListener
 {

@@ -2,12 +2,12 @@
 
 namespace Modules\DiscordConnect\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\Events;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Facades\Event;
-use Modules\DiscordConnect\Listeners;
+use Illuminate\Support\ServiceProvider;
 use Modules\DiscordConnect\Http\Middleware\ForceDiscordConnect;
-use App\Events;
+use Modules\DiscordConnect\Listeners;
 
 class DiscordConnectServiceProvider extends ServiceProvider
 {
@@ -48,7 +48,7 @@ class DiscordConnectServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the service provider. 
+     * Register the service provider.
      *
      * @return void
      */

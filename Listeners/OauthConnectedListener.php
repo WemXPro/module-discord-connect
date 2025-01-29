@@ -1,9 +1,9 @@
 <?php
- 
+
 namespace Modules\DiscordConnect\Listeners;
- 
+
+use App\Events\Oauth\OauthConnected;
 use Modules\DiscordConnect\Services\Discord;
-use App\Events\Oauth\OauthConnected;	
 
 class OauthConnectedListener
 {
@@ -14,7 +14,7 @@ class OauthConnectedListener
     {
         try {
             $orders = $event->userOauth->user->orders()->where('status', 'active')->get();
-            
+
             foreach($orders as $order) {
                 (new Discord)->handleEvent('order_created', $order);
             }
