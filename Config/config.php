@@ -2,7 +2,7 @@
 
 return [
 
-    'name' => 'Discord Connect',
+    'name' => 'DiscordConnect',
     'icon' => 'https://imgur.png',
     'author' => 'WemX',
     'version' => '1.0.0',
@@ -10,10 +10,10 @@ return [
 
     'elements' => [
 
-        'admin_menu' => 
+        'admin_menu' =>
         [
             [
-                'name' => 'Discord Connect',
+                'name' => 'DiscordConnect',
                 'icon' => '<i class="fas fa-book"></i>',
                 'type' => 'dropdown',
                 'items' => [
